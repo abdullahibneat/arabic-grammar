@@ -1,0 +1,16 @@
+{
+  "term": "إِضَافَة",
+  "transliteration": "Idaafa",
+  "definition": "A construct that gives the meaning of possession or relationship.",
+  "examples": [
+    {
+      "arabic": "كِتَابُ اللّٰهِ",
+      "english": "The book of Allah (i.e. Allah's book)"
+    },
+    {
+      "arabic": "ابْنُ زَيْدٍ",
+      "english": "The son of Zaid (i.e. Zaid's son)"
+    }
+  ],
+  "relatedTerms": ["مُضَاف", "مُضَاف إِلَيْهِ"]
+}

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+@font-face {
+  font-family: 'Arabic';
+  src: url('noto-sans-arabic.woff2');
+  unicode-range: U+0600-06FF;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+}
+
+input {
+  accent-color: var(--text-secondary);
+}
+
+input[type='checkbox'] {
+  accent-color: var(--border);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+:root {
+  --white: #ffffff;
+  --text: #374151;
+  --text-secondary: #9ca3af;
+  --hover: #e5e7eb;
+  --border: #e5e7eb;
+  --background: #f3f3f3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: #0a0a0a;
+    --text: #ededed;
+    --text-secondary: #a1a1a1;
+    --hover: #1f1f1f;
+    --border: #262626;
+    --background: #000000;
+  }
+}
+
+html {
+  background-color: var(--background);
+  font-family: 'Arabic', 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75rem;
+  color: var(--text);
+}
+
+html,
+body,
+#app,
+#app {
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}

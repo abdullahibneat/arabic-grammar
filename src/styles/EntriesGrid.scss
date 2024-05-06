@@ -1,0 +1,18 @@
+.entries-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  .entry {
+    background-color: var(--white);
+    border: solid 1px var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    transition: background-color 250ms;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
+}

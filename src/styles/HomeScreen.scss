@@ -3,41 +3,106 @@
   display: flex;
   overflow: hidden;
 
+  .search-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+    padding: 64px;
+    overflow-y: auto;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   .search-wrapper {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+    padding: 10vh 0;
     transition: padding 250ms;
-  }
 
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px 32px;
-  }
+    input {
+      border: solid 1px var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      background-color: var(--white);
+      outline: none;
+      transition: border-color 250ms;
 
-  input {
-    border: solid 1px var(--border);
-    border-radius: 6px;
-    color: var(--text);
-    background-color: var(--white);
-    outline: none;
-    transition: border-color 250ms;
-
-    &:focus {
-      border-color: var(--text-secondary);
+      &:focus {
+        border-color: var(--text-secondary);
+      }
     }
   }
 
-  li:has(span.highlighted) {
-    color: var(--text-secondary);
-    font-style: italic;
+  .term-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 32px;
+    background-color: var(--white);
+    border-left: solid 1px var(--border);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    overflow-y: auto;
+    transition: width 250ms;
+    animation: term-section 250ms forwards;
 
-    span.highlighted {
-      color: var(--text);
-      font-weight: 700;
-      font-style: normal;
+    li:has(span.highlighted) {
+      color: var(--text-secondary);
+      font-style: italic;
+
+      span.highlighted {
+        color: var(--text);
+        font-weight: 700;
+        font-style: normal;
+      }
+    }
+
+    @keyframes term-section {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 60%;
+      }
+    }
+  }
+
+  &:has(.term-section),
+  &:has(input:not(:placeholder-shown)) {
+    .search-wrapper {
+      padding: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .home-screen-container {
+    flex-direction: column;
+    position: relative;
+
+    .search-section {
+      margin: 0;
+    }
+
+    .term-section {
+      position: fixed;
+      inset: 0;
+      top: 100%;
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      transition: top 250ms;
+
+      @keyframes term-section {
+        from {
+          top: 100%;
+        }
+        to {
+          top: 0;
+        }
+      }
     }
   }
 }

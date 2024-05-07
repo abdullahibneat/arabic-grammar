@@ -64,16 +64,8 @@ const HomeScreen = () => {
 
   return (
     <div class="home-screen-container">
-      <Flex
-        column
-        flex={1}
-        gap={16}
-        padding={64}
-        overflowY="auto"
-        maxWidth={800}
-        margin="0 auto"
-      >
-        <div class="search-wrapper" style={{ padding: entry ? 0 : '10vh 0' }}>
+      <section class="search-section">
+        <div class="search-wrapper">
           <Search value={search} setValue={setSearch} />
         </div>
 
@@ -82,60 +74,47 @@ const HomeScreen = () => {
           entries={entries}
           onEntryClick={navigateToEntry}
         />
-      </Flex>
+      </section>
 
-      <Flex width={entry ? '60%' : 0} overflowY="auto" transition="width 250ms">
-        {entry && (
-          <Flex
-            column
-            gap={8}
-            flex={1}
-            padding={32}
-            backgroundColor="var(--white)"
-            borderLeft="solid 1px var(--border)"
-            borderTopLeftRadius={16}
-            borderBottomLeftRadius={16}
-          >
-            <Flex column gap={8}>
-              <Flex>
-                <Text type="h1" style={{ flex: 1 }}>
-                  {entry.term}
-                </Text>
-                <button onClick={() => navigateToEntry(null)}>✕</button>
-              </Flex>
-
-              <Text type="h2" color="text-secondary">
-                {entry.transliteration}
-              </Text>
-            </Flex>
-
-            <Text>{entry.definition}</Text>
-
-            {entry.examples?.length && (
-              <ul>
-                {entry.examples.map((example) => (
-                  <li
-                    dangerouslySetInnerHTML={{
-                      __html: example.english.replace(
-                        /\*([\w\s]+)\*/g,
-                        '<span class="highlighted">$1</span>'
-                      ),
-                    }}
-                  />
-                ))}
-              </ul>
-            )}
-
-            {relatedEntries && relatedEntries.length > 0 && (
-              <EntriesGrid
-                title="Related"
-                entries={relatedEntries}
-                onEntryClick={navigateToEntry}
-              />
-            )}
+      {entry && (
+        <section class="term-section">
+          <Flex>
+            <Text type="h1" style={{ flex: 1 }}>
+              {entry.term}
+            </Text>
+            <button onClick={() => navigateToEntry(null)}>✕</button>
           </Flex>
-        )}
-      </Flex>
+
+          <Text type="h2" color="text-secondary">
+            {entry.transliteration}
+          </Text>
+
+          <Text>{entry.definition}</Text>
+
+          {entry.examples?.length && (
+            <ul>
+              {entry.examples.map((example) => (
+                <li
+                  dangerouslySetInnerHTML={{
+                    __html: example.english.replace(
+                      /\*([\w\s]+)\*/g,
+                      '<span class="highlighted">$1</span>'
+                    ),
+                  }}
+                />
+              ))}
+            </ul>
+          )}
+
+          {relatedEntries && relatedEntries.length > 0 && (
+            <EntriesGrid
+              title="Related"
+              entries={relatedEntries}
+              onEntryClick={navigateToEntry}
+            />
+          )}
+        </section>
+      )}
     </div>
   )
 }

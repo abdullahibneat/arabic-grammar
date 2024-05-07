@@ -10,14 +10,12 @@ const Search = ({ value, setValue }: Props) => (
   <Flex column>
     <Text type="h2">Search</Text>
 
-    <Flex column>
-      <Text type="small">Type a word</Text>
-      <input
-        type="text"
-        value={value}
-        onInput={(e) => setValue(e.currentTarget.value)}
-      />
-    </Flex>
+    <input
+      type="text"
+      value={value}
+      placeholder="Type a word"
+      onInput={(e) => setValue(e.currentTarget.value)}
+    />
   </Flex>
 )
 
